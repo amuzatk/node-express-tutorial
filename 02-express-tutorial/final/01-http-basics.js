@@ -1,3 +1,4 @@
+// Vist https://developer.mozilla.org/en-US/docs/Web/HTTP/Status for http status code responses
 const http = require('http')
 
 const server = http.createServer((req, res) => {
