@@ -19,3 +19,7 @@ customEmitter.on('response', () => {
 })
 
 customEmitter.emit('response', 'john', 34)
+
+
+//IMPORT AREAS TO STUDY WELL
+//1. EVENT LOOP 2. EVENT EMITTER 3. STREAMS 4. ASYNC PATTERNS
