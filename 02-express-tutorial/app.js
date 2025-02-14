@@ -1,40 +1,43 @@
 // const express = require('express')
-// const path = require('path')
-
 // const app = express()
-
-// // setup static and middleware
-// app.use(express.static('./public'))
-
+// const logger = require('./logger')
+// const authorize = require('./authorize')
+// //  req => middleware => res
+// app.use([logger, authorize])
+// // api/home/about/products
 // app.get('/', (req, res) => {
-//   res.sendFile(path.resolve(__dirname, './navbar-app/index.html'))
+//   res.send('Home')
 // })
-
-// app.all('*', (req, res) => {
-//   res.status(404).send('resource not found')
+// app.get('/about', (req, res) => {
+//   res.send('About')
+// })
+// app.get('/api/products', (req, res) => {
+//   res.send('Products')
+// })
+// app.get('/api/items', (req, res) => {
+//   console.log(req.user)
+//   res.send('Items')
 // })
 
 // app.listen(5000, () => {
-//   console.log('server is listening on port 5000....')
+//   console.log('Server is listening on port 5000....')
 // })
 
 
 const express = require('express');
-const path = require('path');
+const {products } = require('./data');
+const logger = require('./logger')
+const authorize = require('./authorize')
 
 const app = express();
+app.use([logger, authorize])
 
-//This serves as middleware to read statics files such as css, html, images, .js
-app.use(express.static('./public'))
+app.get('/api/v1/middle', (req,res)=>{
 
-app.get('/', (req, res)=>{
-    res.sendFile(path.resolve('./navbar-app/index.html'))
+res.send('testing middleware')
+
 })
 
-app.all('*', (req, res)=>{
-    res.status(404).send('Page Not Found')
-})
-
-app.listen(5000, ()=> {
-    console.log("Server listens on port 5000...")
+app.listen(5000, ()=>{
+    console.log('Server listening on port 5000...')
 })
