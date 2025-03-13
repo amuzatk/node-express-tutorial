@@ -1,40 +1,15 @@
-// const express = require('express')
-// const path = require('path')
 
-// const app = express()
-
-// // setup static and middleware
-// app.use(express.static('./public'))
-
-// app.get('/', (req, res) => {
-//   res.sendFile(path.resolve(__dirname, './navbar-app/index.html'))
-// })
-
-// app.all('*', (req, res) => {
-//   res.status(404).send('resource not found')
-// })
-
-// app.listen(5000, () => {
-//   console.log('server is listening on port 5000....')
-// })
-
-
-const express = require('express');
-const path = require('path');
-
+const express = require('express')
 const app = express();
+const people = require("./routess/people");
+const auth = require("./routess/auth");
 
-//This serves as middleware to read statics files such as css, html, images, .js
-app.use(express.static('./public'))
-
-app.get('/', (req, res)=>{
-    res.sendFile(path.resolve('./navbar-app/index.html'))
-})
-
-app.all('*', (req, res)=>{
-    res.status(404).send('Page Not Found')
-})
-
-app.listen(5000, ()=> {
-    console.log("Server listens on port 5000...")
+app.use(express.static("./methods-public"));
+app.use(express.urlencoded({extended: false}));
+app.use(express.json());
+app.use("/api/people", people);
+app.use("/login", auth)
+  
+app.listen(5000, () => {
+  console.log('Server is listening on port 5000....')
 })
