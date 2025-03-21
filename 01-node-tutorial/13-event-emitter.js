@@ -18,4 +18,4 @@ customEmitter.on('response', () => {
   console.log('some other logic here')
 })
 
-customEmitter.emit('response', 'john', 34)
+customEmitter.emit('response', 'john', 34)// listerners will be called in order they are defined when event is emitted
