@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // var http = require('http')
 // var fs = require('fs')
 
@@ -29,3 +30,9 @@ http.createServer(function (req, res){
         console.log(error)
     } )
 } ).listen(5000)
+=======
+console.log('Welcome to Node Tutorial')
+
+
+
+>>>>>>> 9b02724af800f851b187798a9bf5cf3306609fca

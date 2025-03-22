@@ -18,8 +18,12 @@ customEmitter.on('response', () => {
   console.log('some other logic here')
 })
 
+<<<<<<< HEAD
 customEmitter.emit('response', 'john', 34)
 
 
 //IMPORT AREAS TO STUDY WELL
 //1. EVENT LOOP 2. EVENT EMITTER 3. STREAMS 4. ASYNC PATTERNS
+=======
+customEmitter.emit('response', 'john', 34)// listerners will be called in order they are defined when event is emitted
+>>>>>>> 9b02724af800f851b187798a9bf5cf3306609fca
