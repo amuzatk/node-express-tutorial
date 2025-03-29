@@ -29,6 +29,7 @@ const getAllProducts = async (req, res) => {
   }
 
   if(numericFilters){
+    console.log(numericFilters,'=numericFilters=');
     const operatorMap = {
         '<':'$lt',
         '<=':'$lte',
@@ -42,13 +43,23 @@ const getAllProducts = async (req, res) => {
 
     const options = ["price", "rating"];
 
-    filter = filter.split(',').forEach((item)=>{
-        const [field, operator, value] = item.split("-");
-        if(options.includes(field)){
-            queryObject[field] = {[operator] : Number(value) };
-        }
-    });
-    console.log(filter,'==');
+    // filter = filter.split(',').forEach((item)=>{
+    //     const [field, operator, value] = item.split("-");
+    //     if(options.includes(field)){
+    //         queryObject[field] = {[operator] : Number(value) };
+    //     }
+    // });
+    filter = filter.split(',').forEach((item) => {
+  const [field, operator, value] = item.split('-');
+  if (options.includes(field)) {
+    if (!queryObject[field]) {
+      queryObject[field] = {};
+    }
+    queryObject[field][operator] = Number(value);//allows merging multiple operators under the same field:
+  }
+});
+
+    // console.log(filter,'=filter=');
   }
 console.log(queryObject,'query==')
 
