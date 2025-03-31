@@ -2,6 +2,7 @@ require('dotenv').config();
 require('express-async-errors');
 const express = require('express');
 const mongoose =require("mongoose");
+const authenticateUser = require('./middleware/authentication');
 const app = express();
 
 //DB Connection
@@ -20,7 +21,7 @@ app.use(express.json());
 
 //routes
 app.use("/api/v1/auth", authRoutes);
-app.use("/api/v1/jobs", jobRoutes);
+app.use("/api/v1/jobs",authenticateUser, jobRoutes);
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);

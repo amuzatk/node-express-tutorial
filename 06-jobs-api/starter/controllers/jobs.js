@@ -1,9 +1,10 @@
-
+const Job = require('../models/Job');
 
 
 
 const createJob = (req,res)=>{
-    res.send("Create Job")
+    // res.send("Create Job")
+    res.json(req.body)
 }
 
 const getJobs = (req,res)=>{
