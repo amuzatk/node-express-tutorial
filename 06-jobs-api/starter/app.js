@@ -18,12 +18,12 @@ const errorHandlerMiddleware = require('./middleware/error-handler');
 app.use(express.json());
 // extra packages
 
-// app.use(notFoundMiddleware);
-// app.use(errorHandlerMiddleware);
-
 //routes
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/jobs", jobRoutes);
+
+app.use(notFoundMiddleware);
+app.use(errorHandlerMiddleware);
 
 const port = process.env.PORT || 3000;
 
@@ -39,7 +39,6 @@ const start = async () => {
 };
 
 start();
-
 
 
 
